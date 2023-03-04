@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:paddingLeft="16dp"
     android:paddingRight="16dp" >
 
@@ -10,38 +9,60 @@
         android:id="@+id/buttonSecond"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="580dp"
+        android:layout_below="@+id/textView"
         android:layout_alignParentRight="true"
-        android:backgroundTint="#000000"
         android:layout_marginBottom="-160dp"
         android:text="Send" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
+    <TextView
+        android:id="@+id/ToText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="To" />
+        android:layout_marginTop="9dp"
+        android:layout_marginLeft="6dp"
+        android:textSize="18sp"
+        android:text="To" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName2"
+    <View
+        android:id="@+id/DividerTo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Subject" />
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="-160dp"
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName3"
-        android:paddingBottom="455dp"
+    <TextView
+        android:id="@+id/SubjectText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="6dp"
+        android:textSize="18sp"
+        android:text="Subject" />
+
+    <View
+        android:id="@+id/SubjectDivider"
+        android:layout_width="match_parent"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="-160dp"
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider" />
+
+    <TextView
+        android:id="@+id/MessageText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginTop="90dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Message: " />
+        android:layout_marginLeft="6dp"
+        android:textSize="18sp"
+        android:text="Message" />
 
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_marginTop="300dp"
+        android:layout_marginBottom="-160dp"
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider" />
 
 </RelativeLayout>
