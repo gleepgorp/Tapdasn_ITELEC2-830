@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
 import android.widget.ImageButton;
 
 import com.google.android.material.tabs.TabLayout;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         Log.w(TAG, "ASDASDSDSDSDSDSD");
         Log.e(TAG, "HSDUHSDUHSDUHUHUH");
 
-        Button button = (Button) findViewById(R.id.buttonMain);
+        Button button =         (Button) findViewById(R.id.buttonMain);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
