@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="50dp"
+    android:layout_marginTop="5dp"
+    android:background="#4CAF50"
     tools:context=".FragmentB">
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,7 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="100dp"
-        android:textSize="15sp"
-        android:text="FRAGMENT B" />
+        android:textColor="#ffffff"
+        android:text="FRAGMENT B"
+        android:textSize="15sp" />
 
 </FrameLayout>
