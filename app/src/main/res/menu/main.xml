@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--action button for search -->
+    <item android:title="Search"
+        android:id="@+id/search"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:iconTint="@color/white"
+        android:icon="@drawable/baseline_search_24" />
+
+    <!--action button for refresh -->
+    <item android:title="Refresh"
+        android:id="@+id/refresh"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:iconTint="@color/white"
+        android:icon="@drawable/baseline_refresh_24"/>
+
+    <!--action button for copy -->
+    <item android:title="Copy"
+        android:id="@+id/copy"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:iconTint="@color/white"
+        android:icon="@drawable/baseline_content_copy_24"/>
+
+</menu>
