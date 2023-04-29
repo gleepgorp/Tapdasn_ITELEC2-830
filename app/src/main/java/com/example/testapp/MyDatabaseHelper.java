@@ -86,6 +86,4 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
         db.close();
     }
-
-
 }

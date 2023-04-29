@@ -73,7 +73,8 @@ public class MainActivity extends AppCompatActivity {
 
                     Log.d("MainActivity", "Record retrieved with ID: "+id+ ", name: " +name+ ", age: "+age);
                 }
-            }else {
+            }
+            else {
                 Log.d("MainActivity", "No records found,");
             }
 
