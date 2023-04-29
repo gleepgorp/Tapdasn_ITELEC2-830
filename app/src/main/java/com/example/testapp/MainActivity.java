@@ -2,48 +2,90 @@ package com.example.testapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.MediaRouteActionProvider;
 import android.content.Intent;
-import android.nfc.Tag;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 
-import com.google.android.material.tabs.TabLayout;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+    private MyDatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.v(TAG, "AAAAAAAAAAAAAAAA");
-        Log.d(TAG, "ASDASDASDASDSDDD");
-        Log.i(TAG, "ASDASDASDASDSDSD");
-        Log.w(TAG, "ASDASDSDSDSDSDSD");
-        Log.e(TAG, "HSDUHSDUHSDUHUHUH");
+        dbHelper = new MyDatabaseHelper(this);
+        dbHelper.deleteAllData();
+        dbHelper.insertData("John", 25);
+        dbHelper.insertData("Luke", 24);
 
-        Button button = (Button) findViewById(R.id.buttonMain);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "This button is clicked");
+        getData();
+
+        dbHelper.updateData(2,"Mark",24);
+        getData();
+
+        dbHelper.deleteData(2);
+        getData();
+
+        SharedPreferences prefs = getSharedPreferences("my_prefs", MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("name", "John");
+        editor.putInt("age", 20);
+        editor.putBoolean("is_student", true);
+        editor.commit();
+
+        String name = prefs.getString("name", "");
+        int age = prefs.getInt("age", 0);
+        boolean isStudent = prefs.getBoolean("is_student", false);
+        Log.d("MainActivity", name);
+        Log.d("MainActivity", String.valueOf(age));
+        Log.d("MainActivity", String.valueOf(isStudent));
+
+        editor.remove("name");
+        editor.apply();
+
+        name = prefs.getString("name", "");
+        age = prefs.getInt("age", 0);
+        isStudent = prefs.getBoolean("is_student", false);
+        Log.d("MainActivity", name);
+        Log.d("MainActivity", String.valueOf(age));
+        Log.d("MainActivity", String.valueOf(isStudent));
+    }
+
+        @SuppressLint("Range")
+        private void getData(){
+            Cursor cursor = dbHelper.getData();
+
+            Log.d("MainActivity", "======== START ========");
+            if(cursor.getCount() > 0){
+                while(cursor.moveToNext()){
+                    int id = cursor.getInt(cursor.getColumnIndex("_id"));
+                    String name = cursor.getString(cursor.getColumnIndex("name"));
+                    int age = cursor.getInt(cursor.getColumnIndex("age"));
+
+                    Log.d("MainActivity", "Record retrieved with ID: "+id+ ", name: " +name+ ", age: "+age);
+                }
+            }else {
+                Log.d("MainActivity", "No records found,");
             }
-        });
 
-        //02/18/23
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "Button is Clicked: ");
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                startActivity(intent);
-            }
-        });
+            Log.d("MainActivity", "======== [END] ========");
+        }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
 
+        if(dbHelper != null){
+            dbHelper.close();
+        }
     }
 }
