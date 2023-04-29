@@ -2,9 +2,9 @@ package com.example.testapp;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteDatabase;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
@@ -16,10 +16,10 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_AGE = "age";
     private static final String CREATE_TABLE =
-                                "CREATE TABLE " +TABLE_NAME+ "("
-                                        +COLUMN_ID+ "INTEGER PRIMARY KEY AUTOINCREMENT,"
-                                        +COLUMN_NAME+ "TEXT,"
-                                        +COLUMN_AGE+ "INTEGER);";
+                                "CREATE TABLE " +TABLE_NAME+ "("+
+                                        COLUMN_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                                        COLUMN_NAME+ " TEXT,"+
+                                        COLUMN_AGE+ " INTEGER);";
     public MyDatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

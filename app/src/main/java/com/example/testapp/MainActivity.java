@@ -14,7 +14,6 @@ import android.database.Cursor;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
     private MyDatabaseHelper dbHelper;
 
     @Override
